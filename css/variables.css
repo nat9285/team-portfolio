@@ -1,10 +1,21 @@
 :root{
 
-    --primary-color: #EFF0F2;
+    /* variables de estilado */
 
-    --secondary-color: #0A2B56 ;
+    /* color */
 
-    --tertiary-color: #5271FF;
+        /* light */
+
+        --primary-color: #EFF0F2;
+
+        --secondary-color: #0A2B56 ;
+
+        --tertiary-color: #5271FF;
+
+        /* dark */
+
+    /* fuentes */
+    --principal-letter: "Lora"
 
     /*no más de 2 o 3 tipos de colores y estilados de letras*/
 

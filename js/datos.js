@@ -3,10 +3,14 @@ fetch(url)
     .then(response => response.json())
     .then(data => {  
 
-        let titulo = document.getElementById("title").textContent
-        titulo += " | " + data.nombre
+        separador = " | "
 
-        console.log(titulo)
+        let titulo = document.getElementById("title").textContent
+        titulo += separador + data.datos.nombre
         document.getElementById("title").textContent = titulo;
+
+        let profesion = document.getElementById("profesion").textContent
+        profesion = data.informacion.profesion
+        document.getElementById("profesion").textContent = profesion;
     }
-    );
+    )

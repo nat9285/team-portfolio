@@ -1,9 +1,12 @@
 {
     "datos" : {
-    "nombre": "Nombre de ejemplo",
-    "biografia": "blablabla",
-    "subheading":"otorrinonaringologo"
+    "nombre": "Nombre de ejemplo"
     }, 
-    "información"
+    "informacion":{
+
+        "profesion":"Desarrolladores Fullstack",
+
+        "biografia": "blablabla"
+}
 
 }
