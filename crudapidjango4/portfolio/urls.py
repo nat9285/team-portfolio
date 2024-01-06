@@ -1,9 +1,14 @@
-#creamos éste archivo para cargar las direcciones de las vistas de nuestra app portfolio
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import ProjectViewSet,ProjectDetail, PageViewSet
 
-from django.urls import path
-from .views import ProjectList, ProjectDetail
+# Crea un enrutador y registra tu vista de conjunto
+router = DefaultRouter()
+router.register(r'projects', ProjectViewSet, basename='project-list')  # 'projects' será la parte de la URL, puedes cambiarlo según tus preferencias
+router.register(r'page', PageViewSet, basename='page-configuration')
 
+# Configura las URLs de tu aplicación, incluyendo las generadas por el enrutador
 urlpatterns = [
-    path('proyectos/', ProjectList.as_view(), name='lista-proyectos'), #con as_view especifico que debe ser una vista
-    path('proyectos/<int:pk>/', ProjectDetail.as_view(), name='detalle-proyecto'),
+    path('api/', include(router.urls)),
+    path('api/projects/<int:pk>/', ProjectDetail.as_view(), name='project-detail'),
 ]

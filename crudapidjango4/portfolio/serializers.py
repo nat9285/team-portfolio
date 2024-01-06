@@ -1,9 +1,26 @@
 from rest_framework import serializers
-from .models import Project
+from .models import Category, Project, Page
 
-#Los serializers son contenedores que nos permiten tomar tipos de datos complejos, convertirlos en datos nativos de python para después poderlos usar como JSON o XML.
-
-class ProjectSerializer(serializers.ModelSerializer): #model ya que project es un modelo
+class ProjectAPISerializer(serializers.ModelSerializer):
+    categories = serializers.StringRelatedField(many=True)
     class Meta:
-        model = Project #específicamos el modelo
-        fields = '__all__' #serializar todos los campos
+        model = Project
+        fields = ('id', 'name', 'description', 'start_date', 'categories')
+        
+class ProjectCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('name',)
+
+class ProjectSerializer(serializers.ModelSerializer):
+    category = ProjectCategorySerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Project
+        fields = ('id', 'name', 'description', 'start_date', 'category')
+
+class PageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Page
+        fields =('_all_')
